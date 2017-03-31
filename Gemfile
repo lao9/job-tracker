@@ -40,6 +40,12 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'rspec'
+  gem 'rspec-core'
+  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :development do
