@@ -16,23 +16,23 @@ RSpec.feature "User sees a single category" do
     expect(page).to have_content(category.title)
   end
 
-  xscenario "user can view a single category from job show page" do
+  scenario "user can view a single category from job show page" do
     # assuming a category exists
     category = create(:category)
     # and a job associated with that category exists
-    category.jobs.create(:job)
+    job = create(:job)
 
-    job = category.jobs.last
+    job.update(category: category)
     # as a user
     # when I visit a job show page
-    visit company_job(job.company, job)
+    visit company_job_path(job.company, job)
     # and I click on the job's category
     click_link category.title
     # I can see that category's title
     expect(current_path).to eq(category_path(category))
     expect(page).to have_content(category.title)
   end
-  xscenario "user can view all jobs associated with single category" do
+  scenario "user can view all jobs associated with single category" do
     # assuming there are many jobs associated with a single category
     category = create(:category)
     job1, job2 = create_list(:job, 2)
