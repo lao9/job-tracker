@@ -22,5 +22,6 @@ RSpec.feature "User sees a single category" do
     # as a user
     # when I vist a category show page
     # i see those jobs listed
+    # pseudo
   end
 end

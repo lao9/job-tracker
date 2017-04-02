@@ -34,7 +34,11 @@ describe Category do
   end
   describe "relationship" do
     it "has many jobs" do
-      
+      # create a category
+      # add two jobs to that category
+      # verify that is responds to jobs
+      # verify that it has two jobs
+      # verift that those two jobs are the ones we added
     end
   end
 end
