@@ -34,11 +34,14 @@ describe Category do
   end
   describe "relationship" do
     it "has many jobs" do
-      # create a category
-      # add two jobs to that category
-      # verify that is responds to jobs
-      # verify that it has two jobs
-      # verift that those two jobs are the ones we added
+      category = create(:category)
+      job1, job2 = create_list(:job, 2)
+      job1.update(category: category)
+      job2.update(category: category)
+
+      expect(category).to respond_to(:jobs)
+      expect(category.jobs.count).to eq(2)
+      expect(category.jobs).to eq([job1, job2])
     end
   end
 end

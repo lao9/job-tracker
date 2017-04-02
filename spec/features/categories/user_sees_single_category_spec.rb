@@ -1,4 +1,4 @@
-require 'rails_spec'
+require 'rails_helper'
 
 RSpec.feature "User sees a single category" do
   scenario "user can view a single category from category index" do
