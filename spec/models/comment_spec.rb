@@ -31,6 +31,8 @@ describe Comment do
   describe "relationships" do
     it "belongs to a job" do
       comment = create(:comment)
+      job = create(:job)
+      comment.update(job: job)
 
       expect(comment).to respond_to(:job)
       expect(comment.job).to eq(1)

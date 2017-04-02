@@ -55,5 +55,15 @@ describe Job do
       job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo", category: @category)
       expect(job).to respond_to(:category)
     end
+    it "has many comments" do
+      job = create(:job)
+      comment1, comment2 = create_list(:comment, 2)
+      comment1.update(job: job)
+      comment2.update(job: job)
+
+      expect(job).to respond_to(:comments)
+      expect(job.comments.count).to eq(2)
+      expect(job.comments).to eq([comment1, comment2])
+    end
   end
 end
