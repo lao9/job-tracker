@@ -23,6 +23,14 @@ describe Company do
     end
   end
 
+  describe "attributes" do
+    it "has a name" do
+      company = Company.new
+
+      expect(company).to respond_to(:name)
+    end
+  end
+
   describe "relationships" do
     it "has many jobs" do
       company = Company.new(name: "Dropbox")
