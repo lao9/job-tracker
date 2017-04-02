@@ -35,6 +35,17 @@ describe Job do
     end
   end
 
+  describe "attributes" do
+    it "has a title description level_of_interest and city" do
+      job = Job.new
+
+      expect(job).to respond_to(:title)
+      expect(job).to respond_to(:description)
+      expect(job).to respond_to(:level_of_interest)
+      expect(job).to respond_to(:city)
+    end
+  end
+
   describe "relationships" do
     it "belongs to a company" do
       job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo", category: @category)
