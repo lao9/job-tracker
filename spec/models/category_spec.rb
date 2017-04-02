@@ -32,4 +32,9 @@ describe Category do
       end
     end
   end
+  describe "relationship" do
+    it "has many jobs" do
+      
+    end
+  end
 end

@@ -2,6 +2,7 @@ FactoryGirl.define do
 
   factory :job do
     company
+    category
     title Faker::Company.profession.capitalize
     description Faker::Company.bs
     city Faker::Address.city
