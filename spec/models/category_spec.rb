@@ -32,6 +32,15 @@ describe Category do
       end
     end
   end
+
+  describe "attributes" do
+    it "has a title" do
+      category = Category.new
+
+      expect(category).to respond_to(:title)
+    end
+  end
+
   describe "relationship" do
     it "has many jobs" do
       category = create(:category)
