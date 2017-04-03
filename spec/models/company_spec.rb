@@ -36,5 +36,15 @@ describe Company do
       company = Company.new(name: "Dropbox")
       expect(company).to respond_to(:jobs)
     end
+    it "has many contacts" do
+      company = create(:company)
+      contact1, contact2 = create_list(:contact, 2)
+      contact1.update(company: company)
+      contact2.update(company: company)
+
+      expect(company).to respond_to(:contacts)
+      expect(company.contacts.count).to eq(2)
+      expect(company.contacts).to eq([contact1, contact2])
+    end
   end
 end
