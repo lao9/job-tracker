@@ -1,0 +1,10 @@
+<h3>Post a Comment</h3>
+
+<%= form_for [@job, @comment] do |f| %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+
+  <%= f.submit "Leave Comment"%>
+
+<% end %>

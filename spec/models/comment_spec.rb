@@ -35,7 +35,7 @@ describe Comment do
       comment.update(job: job)
 
       expect(comment).to respond_to(:job)
-      expect(comment.job).to eq(1)
+      expect(comment.job).to eq(job)
     end
   end
 end

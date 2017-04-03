@@ -1,5 +1,10 @@
 FactoryGirl.define do
 
+  factory :comment do
+    body Faker::RuPaul.quote
+    job
+  end
+
   factory :job do
     company
     category
