@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :jobs do
-    resources :comments
+    resources :comments, only: [:create]
   end
 
   resources :categories
