@@ -39,10 +39,9 @@ describe Contact do
   end
 
   describe "relationships" do
-    xit "belongs to a company" do
+    it "belongs to a company" do
       contact = create(:contact)
-      company = create(:company)
-      contact.update(company: company)
+      company = contact.company
 
       expect(contact).to respond_to(:company)
       expect(contact.company).to eq(company)
