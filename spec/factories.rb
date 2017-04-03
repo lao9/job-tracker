@@ -1,5 +1,11 @@
 FactoryGirl.define do
 
+  factory :contact do
+    name Faker::TwinPeaks.character
+    position Faker::Company.profession.capitalize
+    email Faker::Internet.email
+  end
+
   factory :comment do
     body Faker::RuPaul.quote
     job
