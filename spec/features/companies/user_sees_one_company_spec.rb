@@ -11,14 +11,11 @@ describe "User sees one company" do
     expect(page).to have_content("ESPN")
     expect(page).to have_content(company.jobs.last.title)
   end
-  xscenario "a user sees existing contact information" do
-    # When the user visits the page for a specific Company, in addition to information about the job there is a form that allows them to enter a Contact for that Company (e.g. “Penelope Santorini”, “Hiring Manager”, “penelope@wooo.com”).
-    # Assuming contact information for a specific company already exists
+  scenario "a user sees existing contact information" do
     contact = create(:contact)
-    # As a user
-    # When I visit a company show page
+
     visit company_path(contact.company)
-    # I can view that contact's name, position, and email
+
     expect(page).to have_content(contact.name)
     expect(page).to have_content(contact.position)
     expect(page).to have_content(contact.email)

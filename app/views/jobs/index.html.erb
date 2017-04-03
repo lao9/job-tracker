@@ -9,3 +9,8 @@
     <%= link_to "Delete", company_job_path(@company, job), method: "delete" %>
   </ul>
 <% end %>
+
+
+<h2>Contacts:</h2>
+
+<%= render partial: 'companies/contact', collection: @company.contacts %>
