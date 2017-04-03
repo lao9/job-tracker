@@ -21,23 +21,15 @@ describe "User sees a specific job" do
 
   scenario "a user can leave and view their comment for a specific job" do
     job = create(:job)
-
     comment = create(:comment)
-    #assuming a job exists
-    # as a user
-    # when i navigate to the job show page
-    visit company_job_path(job.company, job)
-    # and I fill in some comment in the body
-    fill_in "comment[body]", with: comment.body
 
-    # then I click submit ("Submit Comment")
+    visit company_job_path(job.company, job)
+
+    fill_in "comment[body]", with: comment.body
 
     click_on "Leave Comment"
 
-    # then I am back to the job show page
-
     expect(current_path).to eq(job_path(job))
-    # I can view my comment
     expect(page).to have_content(comment.body)
   end
 

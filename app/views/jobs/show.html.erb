@@ -10,7 +10,7 @@
 
 <%= link_to "Back to #{@job.company.name}'s Jobs", company_path(@job.company) %>
 
-<h2>Comments:</h2>
+<h2>Comments (<%= @job.comments.count %>)</h2>
 
 <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
 
