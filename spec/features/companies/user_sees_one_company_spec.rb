@@ -20,7 +20,7 @@ describe "User sees one company" do
     expect(page).to have_content(contact.position)
     expect(page).to have_content(contact.email)
   end
-  xscenario "a user can add and view new contact information" do
+  scenario "a user can add and view new contact information" do
     # When the user visits the page for a specific Company, in addition to information about the job there is a form that allows them to enter a Contact for that Company (e.g. “Penelope Santorini”, “Hiring Manager”, “penelope@wooo.com”).
     contact = build(:contact)
     expect(Contact.count).to eq(0)
@@ -37,7 +37,7 @@ describe "User sees one company" do
     # And click "Create New Contact"
     click_on 'Create New Contact'
     # I expect to be directed to the company show page
-    expect(current_path).to eq(company_path(company))
+    expect(current_path).to eq(company_jobs_path(company))
     # I expect to see the contact's name
     expect(page).to have_content(contact.name)
     # I expect to see the contact's position
