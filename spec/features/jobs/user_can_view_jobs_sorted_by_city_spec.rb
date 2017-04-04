@@ -37,13 +37,41 @@ describe "User sees all jobs" do
       expect(page).to have_link(@job3.category.title)
     end
   end
-  
-  xscenario "a user can see all jobs sorted by city" do
+
+  scenario "a user can see all jobs sorted by city" do
     # assuming a few jobs exist (maybe 3)
     # create job in cities: Denver, New York, Atlanta
     # as a user
     # when I visit /jobs?sort=location
+    visit 'jobs?sort=location'
     # the first entry will be the job with the
+    within("#job_1") do
+      expect(page).to have_content(@job3.title)
+      expect(page).to have_content(@job3.description)
+      expect(page).to have_content("Atlanta")
+      expect(page).to have_content(@job3.level_of_interest)
+      expect(page).to have_link(@job3.company.name)
+      expect(page).to have_link(@job3.category.title)
+    end
+
+    within("#job_2") do
+      expect(page).to have_content(@job1.title)
+      expect(page).to have_content(@job1.description)
+      expect(page).to have_content("Denver")
+      expect(page).to have_content(@job1.level_of_interest)
+      expect(page).to have_link(@job1.company.name)
+      expect(page).to have_link(@job1.category.title)
+    end
+
+    within("#job_3") do
+      expect(page).to have_content(@job2.title)
+      expect(page).to have_content(@job2.description)
+      expect(page).to have_content("New York")
+      expect(page).to have_content(@job2.level_of_interest)
+      expect(page).to have_link(@job2.company.name)
+      expect(page).to have_link(@job2.category.title)
+    end
+
   end
   xscenario "a user can click on the job's company" do
     # assuming one job exists
