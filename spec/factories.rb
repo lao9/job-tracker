@@ -24,7 +24,9 @@ FactoryGirl.define do
   end
 
   factory :tag do
-    title Faker::Company.bs
+    sequence :title do |n|
+      Faker::Company.bs + "#{n}"
+    end
   end
 
   factory :company do
