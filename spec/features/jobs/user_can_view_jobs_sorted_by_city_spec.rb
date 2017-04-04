@@ -113,6 +113,39 @@ describe "User sees all jobs" do
       expect(page).to have_content(@job1.title)
       expect(page).to have_content(@job1.level_of_interest)
     end
-
   end
+
+  scenario "a user can see all jobs filtered by one particular city of interest" do
+    visit 'jobs?location=Denver'
+    # Assuming a few jobs in different cities exist
+    # As a user
+    # When I visit jobs location = Denver
+    # I only see the job title and city for the job in Denver
+    # I do not see the content for the  city for the jobs in New York and Atlanta
+  end
+
+  xscenario "a user can enter the city they want to filter by in a form from jobs index" do
+    visit '/jobs'
+    # Assuming a few jobs in different cities exist
+    # As a user
+    # When I visit any of the jobs page
+    # and I fill in "Denver"
+    # and I click on Filter By City
+    # I am redirected to '/jobs?location=Denver'
+    # and I only see the job title and city for the job in Denver
+    # I do not see the content for the  city for the jobs in New York and Atlanta
+  end
+
+  xscenario "a user can enter a city they want to filter by in a form from jobs index with a sort param in place" do
+    visit '/jobs?sort=interest'
+    # Assuming a few jobs in different cities exist
+    # As a user
+    # When I visit any of the jobs page
+    # and I fill in "Denver"
+    # and I click on Filter By City
+    # I am redirected to '/jobs?location=Denver'
+    # and I only see the job title and city for the job in Denver
+    # I do not see the content for the  city for the jobs in New York and Atlanta
+  end
+
 end
