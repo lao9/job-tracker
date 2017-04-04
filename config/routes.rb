@@ -13,4 +13,8 @@ Rails.application.routes.draw do
 
   resources :categories
 
+  scope module: :list do
+    resources :jobs, only: [:index]
+  end
+  
 end

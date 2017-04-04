@@ -1,0 +1,17 @@
+<h1>All Jobs</h1>
+
+<% counter = 1 %>
+<% @jobs.each do |job| %>
+  <div id=<%="job_#{counter}"%>>
+    <h2><%= job.title %></h2>
+    <ul>
+      <li><%= job.title %></li>
+      <li><%= job.description %></li>
+      <li><%= job.city %></li>
+      <li><%= job.level_of_interest %></li>
+      <li><%= link_to job.company.name, company_jobs_path(job.company) %></li>
+      <li><%= link_to job.category.title, category_path(job.category) %></li>
+    </ul>
+  </div>
+  <% counter += 1 %>
+<% end %>

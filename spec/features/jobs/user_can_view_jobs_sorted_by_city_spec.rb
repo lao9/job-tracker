@@ -2,47 +2,42 @@ require 'rails_helper'
 
 describe "User sees all jobs" do
   before :each do
-    job1, job2, job3 = create_list(:job, 3)
-    job1.update(city: "Denver")
-    job2.update(city: "New York")
-    job3.update(city: "Atlanta")
+    @job1, @job2, @job3 = create_list(:job, 3)
+    @job1.update(city: "Denver")
+    @job2.update(city: "New York")
+    @job3.update(city: "Atlanta")
   end
   scenario "a user sees all the jobs listed" do
-    # assuming a few jobs exist
-    # create job in cities: Denver, New York, Atlanta
-    # as a user
-    # when i visit /jobs
     visit '/jobs'
-    # i see the content for all my jobs
-    # including title, description, city, company, category, level of interest
-    # Denver should be first
+
     within("#job_1") do
-      expect(page).to have_content(job1.title)
-      expect(page).to have_content(job1.description)
+      expect(page).to have_content(@job1.title)
+      expect(page).to have_content(@job1.description)
       expect(page).to have_content("Denver")
-      expect(page).to have_content(job1.level_of_interest)
-      expect(page).to have_link(job1.company.name)
-      expect(page).to have_link(job1.category.title)
+      expect(page).to have_content(@job1.level_of_interest)
+      expect(page).to have_link(@job1.company.name)
+      expect(page).to have_link(@job1.category.title)
     end
-    # New York should be second
+
     within("#job_2") do
-      expect(page).to have_content(job2.title)
-      expect(page).to have_content(job2.description)
+      expect(page).to have_content(@job2.title)
+      expect(page).to have_content(@job2.description)
       expect(page).to have_content("New York")
-      expect(page).to have_content(job2.level_of_interest)
-      expect(page).to have_link(job2.company.name)
-      expect(page).to have_link(job2.category.title)
+      expect(page).to have_content(@job2.level_of_interest)
+      expect(page).to have_link(@job2.company.name)
+      expect(page).to have_link(@job2.category.title)
     end
-    # Atlanta should be third
+
     within("#job_3") do
-      expect(page).to have_content(job3.title)
-      expect(page).to have_content(job3.description)
+      expect(page).to have_content(@job3.title)
+      expect(page).to have_content(@job3.description)
       expect(page).to have_content("Atlanta")
-      expect(page).to have_content(job3.level_of_interest)
-      expect(page).to have_link(job3.company.name)
-      expect(page).to have_link(job3.category.title)
+      expect(page).to have_content(@job3.level_of_interest)
+      expect(page).to have_link(@job3.company.name)
+      expect(page).to have_link(@job3.category.title)
     end
   end
+  
   xscenario "a user can see all jobs sorted by city" do
     # assuming a few jobs exist (maybe 3)
     # create job in cities: Denver, New York, Atlanta
