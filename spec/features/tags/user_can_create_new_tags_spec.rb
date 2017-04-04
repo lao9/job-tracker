@@ -8,7 +8,7 @@ describe "User can create new tags" do
 
     fill_in 'tag[title]', with: new_tag_title
 
-    click_on "Create New Tag"
+    click_on 'Create Tag'
 
     expect(current_path).to eq(tags_path)
     expect(page).to have_content("All Tags")
