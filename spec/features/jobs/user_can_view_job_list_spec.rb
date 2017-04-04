@@ -127,7 +127,7 @@ describe "User sees all jobs" do
   scenario "a user can enter the city they want to filter by in a form" do
     visit '/jobs'
 
-    fill_in "Filter By:", with: "Denver"
+    fill_in "Filter By A City:", with: "Denver"
 
     click_on "Filter!"
 
@@ -140,7 +140,7 @@ describe "User sees all jobs" do
   scenario "a user can enter a partial for the city they want to filter by" do
     visit '/jobs'
 
-    fill_in "Filter By:", with: "New"
+    fill_in "Filter By A City:", with: "New"
 
     click_on "Filter!"
 
@@ -166,7 +166,7 @@ describe "User sees all jobs" do
   scenario "a user can filter from jobs index with a sort param in place" do
     visit '/jobs?sort=interest'
 
-    fill_in "Filter By:", with: "Denver"
+    fill_in "Filter By A City:", with: "Denver"
 
     click_on "Filter!"
 
@@ -179,7 +179,7 @@ describe "User sees all jobs" do
   scenario "a user can enter a city they want to filter by in a form from jobs index with: a sort param in place" do
     visit '/jobs?sort=interest'
 
-    fill_in "Filter By:", with: "Butthead"
+    fill_in "Filter By A City:", with: "Butthead"
 
     click_on "Filter!"
 

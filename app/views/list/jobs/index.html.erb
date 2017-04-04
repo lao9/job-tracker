@@ -2,6 +2,14 @@
 
 <%= render partial: 'filter' %>
 
+<div class="">
+  <%= link_to "Sort By City", '/jobs?sort=location' %>
+</div>
+
+<div class="">
+  <%= link_to "Sort By Level of Interest", '/jobs?sort=interest' %>
+</div>
+
 <% counter = 1 %>
 <% @jobs.each do |job| %>
   <div id=<%="job_#{counter}"%>>
