@@ -1,5 +1,7 @@
 <h1>All Jobs</h1>
 
+<%= render partial: 'filter' %>
+
 <% counter = 1 %>
 <% @jobs.each do |job| %>
   <div id=<%="job_#{counter}"%>>
@@ -15,3 +17,5 @@
   </div>
   <% counter += 1 %>
 <% end %>
+
+<%= "No Jobs Found for that City!" if @jobs.count == 0 %>

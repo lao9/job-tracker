@@ -1,0 +1,9 @@
+<%= form_tag("/jobs", method: "get") do %>
+  <%= label_tag(:q, "Filter By:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Filter!") %>
+<% end %>
+
+<%= form_tag("/jobs", method: "get") do %>
+  <%= submit_tag("Clear Filters") %>
+ <% end %>

@@ -117,77 +117,79 @@ describe "User sees all jobs" do
 
   scenario "a user can see all jobs filtered by one particular city of interest" do
     visit 'jobs?location=Denver'
-    # Assuming a few jobs in different cities exist
-    # As a user
-    # When I visit jobs location = Denver
-    # I only see the job title and city for the job in Denver
+
     expect(page).to have_content(@job1.title)
     expect(page).to have_content(@job1.city)
     expect(page).to_not have_content(@job2.city)
     expect(page).to_not have_content(@job3.city)
-    # I do not see the content for the  city for the jobs in New York and Atlanta
   end
 
-  xscenario "a user can enter the city they want to filter by in a form from jobs index" do
+  scenario "a user can enter the city they want to filter by in a form" do
     visit '/jobs'
-    # Assuming a few jobs in different cities exist
-    # As a user
-    # When I visit any of the jobs page
-    fill_in 'filter[city]', with "Denver"
-    # and I fill in "Denver"
-    click_on "Filter By City"
-    # and I click on Filter By City
-    expect(current_path).to eq('jobs?location=Denver')
-    # I am redirected to '/jobs?location=Denver'
+
+    fill_in "Filter By:", with: "Denver"
+
+    click_on "Filter!"
+
     expect(page).to have_content(@job1.title)
     expect(page).to have_content(@job1.city)
     expect(page).to_not have_content(@job2.city)
     expect(page).to_not have_content(@job3.city)
-    # and I only see the job title and city for the job in Denver
-    # I do not see the content for the  city for the jobs in New York and Atlanta
   end
 
-  xscenario "a user can enter a partial for the city they want to filter by in a form from jobs index" do
+  scenario "a user can enter a partial for the city they want to filter by" do
     visit '/jobs'
-    # Assuming a few jobs in different cities exist
-    # As a user
-    # When I visit any of the jobs page
-    fill_in 'filter[city]', with "New"
-    # and I fill in "Denver"
-    # and I click on Filter By City
-    # I am redirected to '/jobs?location=Denver'
-    click_on "Filter By City"
-    # and I click on Filter By City
-    expect(current_path).to eq('jobs?location=New')
-    # I am redirected to '/jobs?location=Denver'
+
+    fill_in "Filter By:", with: "New"
+
+    click_on "Filter!"
+
     expect(page).to have_content(@job2.title)
     expect(page).to have_content(@job2.city)
     expect(page).to_not have_content(@job1.city)
     expect(page).to_not have_content(@job3.city)
-    # and I only see the job title and city for the job in Denver
-    # I do not see the content for the  city for the jobs in New York and Atlanta
   end
 
-  xscenario "a user can enter a city they want to filter by in a form from jobs index with a sort param in place" do
+  scenario "a user can clear their filter" do
+    visit 'jobs?location=Denver'
+
+    click_on "Clear Filters"
+
+    expect(page).to have_content(@job1.title)
+    expect(page).to have_content(@job2.title)
+    expect(page).to have_content(@job3.title)
+    expect(page).to have_content(@job1.city)
+    expect(page).to have_content(@job2.city)
+    expect(page).to have_content(@job3.city)
+  end
+
+  scenario "a user can filter from jobs index with a sort param in place" do
     visit '/jobs?sort=interest'
-    # Assuming a few jobs in different cities exist
-    # As a user
-    fill_in 'filter[city]', with "Denver"
-    # and I fill in "Denver"
-    click_on "Filter By City"
-    # and I click on Filter By City
-    expect(current_path).to eq('jobs?location=Denver')
-    # I am redirected to '/jobs?location=Denver'
+
+    fill_in "Filter By:", with: "Denver"
+
+    click_on "Filter!"
+
     expect(page).to have_content(@job1.title)
     expect(page).to have_content(@job1.city)
     expect(page).to_not have_content(@job2.city)
     expect(page).to_not have_content(@job3.city)
-    # When I visit any of the jobs page
-    # and I fill in "Denver"
-    # and I click on Filter By City
-    # I am redirected to '/jobs?location=Denver'
-    # and I only see the job title and city for the job in Denver
-    # I do not see the content for the  city for the jobs in New York and Atlanta
+  end
+
+  scenario "a user can enter a city they want to filter by in a form from jobs index with: a sort param in place" do
+    visit '/jobs?sort=interest'
+
+    fill_in "Filter By:", with: "Butthead"
+
+    click_on "Filter!"
+
+    expect(page).to have_content("No Jobs Found for that City!")
+    expect(page).to_not have_content(@job1.title)
+    expect(page).to_not have_content(@job2.title)
+    expect(page).to_not have_content(@job3.title)
+    expect(page).to_not have_content(@job1.city)
+    expect(page).to_not have_content(@job2.city)
+    expect(page).to_not have_content(@job3.city)
   end
 
 end
