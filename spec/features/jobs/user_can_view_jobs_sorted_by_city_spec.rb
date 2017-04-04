@@ -39,7 +39,7 @@ describe "User sees all jobs" do
   end
 
   scenario "a user can see all jobs sorted by city" do
-    visit 'jobs?sort=location'
+    visit '/jobs?sort=location'
 
     within("#job_1") do
       expect(page).to have_content(@job3.title)
@@ -71,31 +71,24 @@ describe "User sees all jobs" do
   end
 
   scenario "a user can click on the job's company" do
-    # assuming one job exists
-    # as a user
-    # when I visit /jobs
     visit '/jobs'
-    # i can click on company
+
     within("#job_1") do
-      click_link job1.company.name
+      click_link @job1.company.name
     end
-    # and will be redirected to the company's show page
-    expect(current_path).to eq(company_jobs_path(job1.company))
-    # and will have the content of the company's name
-    expect(page).to have_content(job1.company.name)
+
+    expect(current_path).to eq(company_jobs_path(@job1.company))
+    expect(page).to have_content(@job1.company.name)
   end
-  xscenario "a user can click on the job's category" do
-    # assuming one job exists
-    # as a user
-    # when I visit /jobs
-    visit 'jobs?sort=location'
-    # i can click on category
+
+  scenario "a user can click on the job's category" do
+    visit '/jobs?sort=location'
+
     within("#job_3") do
-      click_link job3.company.name
+      click_link @job2.category.title
     end
-    # and will be redirected to the category's show page
-    expect(current_path).to eq(company_jobs_path(job3.company))
-    # and will have the content of the category's title
-    expect(page).to have_content(job3.company.name)
+
+    expect(current_path).to eq(category_path(@job2.category))
+    expect(page).to have_content(@job2.category.title)
   end
 end
