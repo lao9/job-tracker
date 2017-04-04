@@ -39,12 +39,8 @@ describe "User sees all jobs" do
   end
 
   scenario "a user can see all jobs sorted by city" do
-    # assuming a few jobs exist (maybe 3)
-    # create job in cities: Denver, New York, Atlanta
-    # as a user
-    # when I visit /jobs?sort=location
     visit 'jobs?sort=location'
-    # the first entry will be the job with the
+
     within("#job_1") do
       expect(page).to have_content(@job3.title)
       expect(page).to have_content(@job3.description)
@@ -73,7 +69,8 @@ describe "User sees all jobs" do
     end
 
   end
-  xscenario "a user can click on the job's company" do
+
+  scenario "a user can click on the job's company" do
     # assuming one job exists
     # as a user
     # when I visit /jobs
