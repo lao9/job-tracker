@@ -1,21 +1,16 @@
 require 'rails_helper'
 
-describe "User sees all tags" do
-  it "user can see all tags" do
+describe "User edits a tag" do
+  it "user can edit an existing tag" do
     tag1, tag2 = create_list(:tag, 2)
 
     visit tags_path
 
     within(".tag_1") do
-      expect(page).to have_link(tag1.title)
-      expect(page).to have_link('Edit')
-      expect(page).to have_link('Delete')
+      click_link('Edit')
     end
-    within(".tag_2") do
-      expect(page).to have_link(tag2.title)
-      expect(page).to have_link('Edit')
-      expect(page).to have_link('Delete')
-    end
+
+    expect(current_path).to eq()
   end
 end
 

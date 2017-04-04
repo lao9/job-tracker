@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   end
 
   def index
-    @tags = Tag.all
+    @tags = Tag.order(:title)
   end
 
   def create
