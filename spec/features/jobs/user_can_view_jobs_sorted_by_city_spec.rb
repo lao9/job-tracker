@@ -91,4 +91,28 @@ describe "User sees all jobs" do
     expect(current_path).to eq(category_path(@job2.category))
     expect(page).to have_content(@job2.category.title)
   end
+
+  scenario "a user can see all jobs sorted by level of interest" do
+    @job1.update(level_of_interest: 10)
+    @job2.update(level_of_interest: 20)
+    @job3.update(level_of_interest: 30)
+
+    visit '/jobs?sort=interest'
+
+    within("#job_1") do
+      expect(page).to have_content(@job3.title)
+      expect(page).to have_content(@job3.level_of_interest)
+    end
+
+    within("#job_2") do
+      expect(page).to have_content(@job2.title)
+      expect(page).to have_content(@job2.level_of_interest)
+    end
+
+    within("#job_3") do
+      expect(page).to have_content(@job1.title)
+      expect(page).to have_content(@job1.level_of_interest)
+    end
+
+  end
 end
