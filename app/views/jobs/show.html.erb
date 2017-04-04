@@ -8,6 +8,8 @@
   <li>Company: <%= link_to @job.company.name, company_path(@job.company) %></li>
 </ul>
 
+<%= link_to "Edit", edit_company_job_path(@job.company, @job) %>
+
 <%= link_to "Back to #{@job.company.name}'s Jobs", company_path(@job.company) %>
 
 <h2>Comments (<%= @job.comments.count %>)</h2>

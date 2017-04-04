@@ -5,7 +5,7 @@
 <% counter = 1 %>
 <% @jobs.each do |job| %>
   <div id=<%="job_#{counter}"%>>
-    <h2><%= job.title %></h2>
+    <h2><%= link_to job.title, company_job_path(job.company, job) %></h2>
     <ul>
       <li><%= job.title %></li>
       <li><%= job.description %></li>

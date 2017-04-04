@@ -17,4 +17,6 @@ Rails.application.routes.draw do
     resources :jobs, only: [:index]
   end
 
+  resources :dashboard, only: [:index]
+
 end
