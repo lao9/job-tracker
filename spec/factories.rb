@@ -23,6 +23,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :tag do
+    title Faker::Company.bs
+  end
+
   factory :company do
     sequence :name do |n|
       Faker::Company.name + " #{n}"

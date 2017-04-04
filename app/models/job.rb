@@ -6,6 +6,9 @@ class Job < ActiveRecord::Base
   belongs_to :category
   has_many :comments
 
+  has_many :job_tags
+  has_many :tags, through: :job_tags
+
   def self.count_by_interest
     Job.group(:level_of_interest).count.sort_by(&:first).reverse
   end

@@ -65,5 +65,18 @@ describe Job do
       expect(job.comments.count).to eq(2)
       expect(job.comments).to eq([comment1, comment2])
     end
+    it "has many tags" do
+      job = create(:job)
+
+      expect(job).to respond_to(:tags)
+
+      tag1, tag2 = create_list(:tag, 2)
+
+      JobTag.create(tag: tag1, job: job)
+      JobTag.create(tag: tag2, job: job)
+
+      expect(job.tags.count).to eq(2)
+      expect(job.tags).to eq([tag1, tag2])
+    end
   end
 end
