@@ -1,47 +1,53 @@
-<h1>Welcome to the Jobs Analytics Dashboard!</h1>
+<h1>Welcome to Job Tracker!</h1>
 
 <h2><%= "No Jobs Analyze :( " if Job.count == 0 %></h2>
 
-<div class="count_by_interest">
-  <h2>Number of Jobs by Level of Interest</h2>
-  <table>
-    <tr class="table-header">
-      <th>Level of Interest</th>
-      <th>Count of Jobs</th>
-    </tr>
-    <% @count_by_interest.each do |interest, count| %>
-    <tr class=<%="row_#{interest}"%>>
-      <td> <%= interest %> </td>
-      <td> <%= count %> </td>
-    </tr>
-    <% end %>
-  </table>
-</div>
+<div class="flex-container">
 
-<div class="top_three_by_average_interest">
-  <h2>Top Three Companies:</h2>
-  <p>Companies are ranked by average level of interest.</p>
-  <ol>
-    <% @top_three_by_average_interest.each do |company, avg| %>
-      <li class=<%="average_#{avg.to_i}"%>><%= company.name %>: <%= avg.to_i %></li>
-    <% end %>
-  </ol>
-</div>
+  <div class="count_by_interest">
+    <h2>Number of Jobs by Level of Interest</h2>
+    <table class="table well">
+      <tr class="table-header">
+        <th>Level of Interest</th>
+        <th>Count of Jobs</th>
+      </tr>
+      <% @count_by_interest.each do |interest, count| %>
+      <tr class=<%="row_#{interest}"%>>
+        <td> <%= interest %> </td>
+        <td> <%= count %> </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 
-<div class="jobs_per_city">
-  <h2>Number of Jobs per City</h2>
-  <table>
-    <tr class="table-header">
-      <th>City</th>
-      <th>Count of Jobs</th>
-    </tr>
-    <% counter = 1 %>
-    <% @count_by_city.each do |city, count| %>
-    <tr class=<%="row_#{counter}"%>>
-      <td> <%= link_to city, "/jobs?location=#{city.split.join("%20")}" %> </td>
-      <td> <%= count %> </td>
-    </tr>
-    <% counter += 1 %>
-    <% end %>
-  </table>
+  <div class="top_three_by_average_interest">
+    <h2>Top Three Companies:</h2>
+    <div class="well">
+      <p>Companies are ranked by average level of interest.</p>
+      <ol>
+        <% @top_three_by_average_interest.each do |company, avg| %>
+        <li class=<%="average_#{avg.to_i}"%>><%= company.name %>: <%= avg.to_i %></li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+
+  <div class="jobs_per_city">
+    <h2>Number of Jobs per City</h2>
+    <table class="table well">
+      <tr class="table-header">
+        <th>City</th>
+        <th>Count of Jobs</th>
+      </tr>
+      <% counter = 1 %>
+      <% @count_by_city.each do |city, count| %>
+      <tr class=<%="row_#{counter}"%>>
+        <td> <%= link_to city, "/jobs?location=#{city.split.join("%20")}" %> </td>
+        <td> <%= count %> </td>
+      </tr>
+      <% counter += 1 %>
+      <% end %>
+    </table>
+  </div>
+
 </div>

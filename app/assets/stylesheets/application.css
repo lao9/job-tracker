@@ -13,3 +13,106 @@
  *= require_tree .
  *= require_self
  */
+
+ body{
+   background-color: #dce9f4;
+   font-family: 'Lato', sans-serif;
+   font-size: 16px;
+ }
+
+ label{
+   font-size: 20px;
+ }
+
+ .flex-container{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-content: center;
+ }
+
+
+ .flex-container-info{
+   display: flex;
+   justify-content: space-between;
+   align-content: center;
+ }
+
+ .header-wrapper{
+   flex-grow: 1;
+   align-content: center;
+   padding-top: 30px;
+   padding-bottom: 30px;
+ }
+
+ .bike-header{
+   text-align: center;
+ }
+
+ .bike-home-image{
+   min-width: 65%
+ }
+
+ .content-wrapper{
+   justify-content: center;
+   align-content: center;
+ }
+
+ .bike-content{
+   font-family: 'Lato', sans-serif;
+   font-weight: 400;
+   font-size: 20px;
+ }
+
+ h1{
+   font-size: 40px;
+   font-weight: 600;
+ }
+
+ .navbar-brand{
+   font-size: 35px;
+ }
+
+ .nav{
+   font-size: 20px;
+ }
+
+ .dropdown-font{
+   font-size: 20px;
+ }
+
+ .btn-primary{
+   background-color: #9aa8c0;
+   border-color: #848fad;
+   color: black;
+   font-weight: 800;
+ }
+
+ .btn-danger{
+   background-color: #c09aa1;
+   border-color: #b38e93;
+   color: black;
+   font-weight: 800;
+ }
+
+ .station-box{
+   width: 22%;
+ }
+
+ .show-box{
+   width: 22%;
+   text-align: center;
+ }
+
+ .show-box>h2{
+   color: #848fad;
+ }
+
+ .hide-me{
+   background-color: #a1c09a;
+   border-color: #a1c09a;
+ }
+
+ .half-box{
+   max-width: 35%
+ }

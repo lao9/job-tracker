@@ -1,12 +1,14 @@
 <h1>All Jobs for <strong><%= @company.name %></strong></h1>
 
-<%= link_to  "Add New Job", new_company_job_path(@company) %>
+<%= link_to "Add New Job", new_company_job_path(@company), method: "get" %>
 
 <% @jobs.each do |job| %>
-  <ul class=<%= "job_#{job.id}" %>>
-    <%= link_to job.title, company_job_path(@company, job)%>
-    <%= link_to "Edit", edit_company_job_path(@company, job) %>
-    <%= link_to "Delete", company_job_path(@company, job), method: "delete" %>
+  <ul class="well <%= "job_#{job.id}" %>">
+    <div class="flex-container">
+      <%= link_to job.title, company_job_path(@company, job)%>
+      <%= link_to "Edit", edit_company_job_path(@company, job) %>
+      <%= link_to "Delete", company_job_path(@company, job), method: "delete" %>
+    </div>
   </ul>
 <% end %>
 
