@@ -1,19 +1,27 @@
 <h1>All Jobs for <strong><%= @company.name %></strong></h1>
 
-<%= link_to "Add New Job", new_company_job_path(@company), method: "get" %>
+<div class="">
+  <%= link_to "Add New Job", new_company_job_path(@company), {type: "button", class: "btn btn-success"} %>
+</div>
 
-<% @jobs.each do |job| %>
+<br>
+
+<div class="">
+  <% @jobs.each do |job| %>
   <ul class="well <%= "job_#{job.id}" %>">
     <div class="flex-container">
-      <%= link_to job.title, company_job_path(@company, job)%>
-      <%= link_to "Edit", edit_company_job_path(@company, job) %>
-      <%= link_to "Delete", company_job_path(@company, job), method: "delete" %>
+      <h3><%= link_to job.title, company_job_path(@company, job)%></h3>
+      <div class="flex-container">
+        <%= link_to "Edit", edit_company_job_path(@company, job), {type: "button", class: "btn btn-primary"} %>
+        <%= button_to "Delete", company_job_path(@company, job), {method: "delete", class: "btn btn-danger"} %>
+      </div>
     </div>
   </ul>
-<% end %>
+  <% end %>
+</div>
 
 
-<h2>Contacts:</h2>
+<h1>Contacts:</h1>
 
 <%= render partial: 'companies/contact', collection: @company.contacts %>
 

@@ -5,8 +5,8 @@
     <div class="flex-container">
       <h2><%= link_to company.name, company_path(company) %></h2>
       <div class="flex-container">
-        <%= button_to "Edit", edit_company_path(company), class: "btn-primary" %>
-        <%= button_to "Delete", company_path(company), method: "delete", class: "btn-danger" %>
+        <%= link_to "Edit", edit_company_path(company), {type: "button", class: "btn btn-primary"} %>
+        <%= button_to "Delete", company_path(company), {method: "delete", class: "btn btn-danger"} %>
       </div>
     </div>
   </div>
