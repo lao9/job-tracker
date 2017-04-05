@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "User can create new tags" do
-  it "user can add a new tag" do
+feature "User can create new tags" do
+  scenario "user can add a new tag" do
     new_tag_title = "Shante You Stay"
 
     visit new_tag_path

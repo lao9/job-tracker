@@ -13,6 +13,13 @@
   <%= f.label :city %>
   <%= f.text_field :city %>
 
+  <% Tag.order(:title).each do |tag| -%>
+    <div>
+      <%= check_box_tag :tag_ids, tag.id, @job.tags.include?(tag), :name => 'job[tag_ids][]', id: "tag-#{tag.id}" %>
+      <%= tag.title %>
+    </div>
+  <% end %>
+
   <%= f.label :category_id, "Category" %>
   <%= collection_select(:job, :category_id, Category.all, :id, :title) %>
 

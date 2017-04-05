@@ -4,6 +4,12 @@
   <li>Description: <%= @job.description %></li>
   <li>Level of Interest: <%= @job.level_of_interest %></li>
   <li>City: <%= @job.city %></li>
+  <li>
+    Tags:
+    <% @job.tags.order(:title).each do |tag| %>
+      <%= link_to tag.title, tag_path(tag) %>
+    <% end %>
+  </li>
   <li>Category: <%= link_to @job.category.title, category_path(@job.category) %></li>
   <li>Company: <%= link_to @job.company.name, company_path(@job.company) %></li>
 </ul>

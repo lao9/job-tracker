@@ -1,8 +1,11 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:edit, :update, :destroy]
+  before_action :set_tag, only: [:edit, :update, :destroy, :show]
 
   def new
     @tag = Tag.new
+  end
+
+  def show
   end
 
   def index

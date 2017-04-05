@@ -1,0 +1,9 @@
+<h1> Viewing All Jobs for the "<%=@tag.title%>" Tag:</h1>
+
+<ul>
+  <% @tag.jobs.order(:title).each do |job| %>
+    <li class=<%= "job_#{job.id}" %>>
+      <%= link_to job.title, company_job_path(job.company, job)%>
+    </li>
+  <% end %>
+</ul>

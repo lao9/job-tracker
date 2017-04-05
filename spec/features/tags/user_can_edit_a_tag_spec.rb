@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "User edits a tag" do
-  it "user can edit an existing tag" do
+feature "User edits a tag" do
+  scenario "user can edit an existing tag" do
     tag1, tag2 = create_list(:tag, 2)
 
     new_tag_title = "Butthead"

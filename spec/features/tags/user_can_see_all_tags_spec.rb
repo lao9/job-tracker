@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "User sees all tags" do
-  it "user can see all tags" do
+feature "User sees all tags" do
+  scenario "user can see all tags" do
     tag1, tag2 = create_list(:tag, 2)
 
     visit tags_path
