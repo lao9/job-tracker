@@ -26,4 +26,8 @@ class Job < ActiveRecord::Base
     Job.group(:city).count.sort_by(&:last).reverse
   end
 
+  def tags_sorted_by_tag_count
+    Tag.joins(:jobs).group("tags.id").order(("count(tags.id) DESC"))
+  end
+
 end

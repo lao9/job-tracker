@@ -47,6 +47,22 @@ describe "User sees a specific job" do
     expect(page).to have_link(tag1.title)
     expect(page).to have_link(tag2.title)
   end
+  scenario "a user can see number of jobs associated with that tag" do
+    # as a user when i visit a specific job page
+    # i see the name of each of the tags associated with that job
+    # and i see a count of how many jobs have each specific tag listed
+    tag1, tag2 = create_list(:tag, 2)
+    job1, job2 = create_list(:job, 2)
+
+    JobTag.create(tag: tag1, job: job1)
+    JobTag.create(tag: tag1, job: job2)
+    JobTag.create(tag: tag2, job: job1)
+
+    visit company_job_path(job1.company, job1)
+    
+    expect(page).to have_link("#{tag1.title} (2)")
+    expect(page).to have_link("#{tag2.title} (1)")
+  end
 
   scenario "a user can click on a tag to go to that tag's show page" do
     tag1, tag2 = create_list(:tag, 2)

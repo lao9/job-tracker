@@ -1,9 +1,12 @@
 <h1> Viewing All Jobs for the "<%=@tag.title%>" Tag:</h1>
 
 <ul>
-  <% @tag.jobs.order(:title).each do |job| %>
-    <li class=<%= "job_#{job.id}" %>>
+  <% @tag.jobs_sorted_by_tag_count.each_with_index do |job, index| %>
+    <li id='<%="job_rank_#{index}"%>' >
       <%= link_to job.title, company_job_path(job.company, job)%>
+      <% job.tags_sorted_by_tag_count.each_with_index do |tag, index| %>
+        <%= "#{tag.title} (#{tag.job_count})#{', ' if index != job.tags.count-1}" %>
+      <% end %>
     </li>
   <% end %>
 </ul>
