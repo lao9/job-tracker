@@ -2,7 +2,7 @@
 
 <ul>
   <% @tag.jobs_sorted_by_tag_count.each_with_index do |job, index| %>
-    <li id='<%="job_rank_#{index}"%>' >
+    <li class='<%="job_#{job.id}"%>' id='<%="job_rank_#{index}"%>' >
       <%= link_to job.title, company_job_path(job.company, job)%>
       <% job.tags_sorted_by_tag_count.each_with_index do |tag, index| %>
         <%= "#{tag.title} (#{tag.job_count})#{', ' if index != job.tags.count-1}" %>
